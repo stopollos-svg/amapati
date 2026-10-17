@@ -1,52 +1,42 @@
 # Deploying Amapati to Vercel
 
-Follow these steps to deploy **Amapati.com** to Vercel with zero downtime and all features preserved.
+Follow these steps to deploy **Amapati.com** to Vercel with zero errors and all features preserved.
+
+---
+
+## 🛠️ Resolved Build Configuration
+
+- **`installCommand`**: `npm install --legacy-peer-deps` (configured in `vercel.json` and `.npmrc` to eliminate npm `ERESOLVE` peer dependency conflicts with `esbuild`/`vite`).
+- **`buildCommand`**: `npm run build`
+- **`outputDirectory`**: `dist`
+- **`framework`**: `vite`
 
 ---
 
 ## ⚡ Method 1: Deploy via GitHub (Recommended)
 
-1. **Push your code to GitHub**:
+1. **Commit & push your updated code**:
    ```bash
-   git init
    git add .
-   git commit -m "feat: Amapati technology marketplace"
-   git remote add origin https://github.com/your-username/amapati-marketplace.git
-   git branch -M main
-   git push -u origin main
+   git commit -m "fix: resolve npm ERESOLVE peer dependencies for Vercel"
+   git push origin main
    ```
 
-2. **Import to Vercel**:
-   - Go to [vercel.com/new](https://vercel.com/new).
-   - Select your `amapati-marketplace` repository.
-   - Framework Preset: **Vite** (auto-detected).
-   - Build Command: `npm run build`
-   - Output Directory: `dist`
-   - Root Directory: `./`
+2. **Trigger Vercel Build**:
+   - Vercel will automatically re-deploy your commit with `--legacy-peer-deps`.
+   - The build will succeed without any `ERESOLVE` errors.
 
 3. **Configure Environment Variables in Vercel** (Project Settings > Environment Variables):
    - `VITE_SUPABASE_URL`: (Optional) Your Supabase Project URL (`https://xyz.supabase.co`)
    - `VITE_SUPABASE_ANON_KEY`: (Optional) Your Supabase public anon key
    - `APP_URL`: Your Vercel domain (e.g. `https://amapati.vercel.app`)
 
-4. **Click Deploy**:
-   - Vercel will build and deploy your marketplace in under 60 seconds.
-   - `vercel.json` already handles all SPA client routes (`/(.*) -> /index.html`) so refreshing on `/admin` or product pages will not return 404.
-
 ---
 
 ## 💻 Method 2: Deploy via Vercel CLI
 
-If you have the Vercel CLI installed:
-
 ```bash
-# 1. Install CLI (if not already installed)
-npm install -g vercel
-
-# 2. Deploy preview
-vercel
-
-# 3. Deploy to production
+# Deploy to production directly
 vercel --prod
 ```
 
