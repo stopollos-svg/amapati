@@ -1,0 +1,6 @@
+{
+  "name": "Amapati - Shopping & Technology Marketplace",
+  "description": "Simplified shopping & technology marketplace with tiered wholesale pricing, RFQs, verified sellers, multi-role access control, and dark mode.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
