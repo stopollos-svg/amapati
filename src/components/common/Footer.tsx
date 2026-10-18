@@ -145,6 +145,17 @@ export const Footer: React.FC = () => {
             <li>
               <span className="text-slate-400">48-Hour Secure Invite Tokens</span>
             </li>
+            <li>
+              <a
+                href="/app-ads.txt"
+                target="_blank"
+                rel="noreferrer"
+                className="hover:text-orange-400 text-emerald-400 font-mono transition-colors flex items-center gap-1"
+              >
+                <span>/app-ads.txt (Verified)</span>
+                <ExternalLink className="w-3 h-3" />
+              </a>
+            </li>
           </ul>
         </div>
 

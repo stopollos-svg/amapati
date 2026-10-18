@@ -13,17 +13,35 @@ Follow these steps to deploy **Amapati.com** to Vercel with zero errors and all 
 
 ---
 
+## 📱 Developer Website & app-ads.txt Verification (IAB Tech Lab)
+
+Your developer website is pre-configured with `/app-ads.txt` and `/robots.txt` for Google Play Store, Apple App Store, and Google AdMob verification:
+
+- **Root Location**: `/app-ads.txt`
+- **Specification Snippet**:
+  ```text
+  google.com, pub-2596010858935461, DIRECT, f08c47fec0942fa0
+  ```
+- **Vercel Routing**: Configured in `vercel.json` to be served as `text/plain; charset=utf-8` with permissive CORS headers.
+- **In-App Crawler Verification**: Go to **Admin Hub > Settings > Developer Website & app-ads.txt** to run a real-time crawler audit and inspect status checks.
+
+### App Store Setup:
+1. **Google Play Console**: In **Store presence > Store settings > Website**, enter your domain (e.g., `https://amapati.vercel.app` or your custom domain).
+2. **Apple App Store Connect**: In **App Information > General Information**, enter the website under **Marketing URL** or **Support URL**.
+
+---
+
 ## ⚡ Method 1: Deploy via GitHub (Recommended)
 
 1. **Commit & push your updated code**:
    ```bash
    git add .
-   git commit -m "fix: resolve npm ERESOLVE peer dependencies for Vercel"
+   git commit -m "feat: add IAB Tech Lab app-ads.txt and verifier"
    git push origin main
    ```
 
 2. **Trigger Vercel Build**:
-   - Vercel will automatically re-deploy your commit with `--legacy-peer-deps`.
+   - Vercel will automatically deploy with `--legacy-peer-deps`.
    - The build will succeed without any `ERESOLVE` errors.
 
 3. **Configure Environment Variables in Vercel** (Project Settings > Environment Variables):
